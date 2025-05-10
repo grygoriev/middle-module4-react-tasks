@@ -21,12 +21,17 @@ export function useFetch<T = unknown>(
 	const [error, setError] = useState<Error | null>(null);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 
-	const urlWithParams = (base: string, params?: QueryParams) =>
-		!params || !Object.keys(params).length
-			? base
-			: `${base}?${new URLSearchParams(
-					Object.entries(params).map(([k, v]) => [k, String(v)]),
-				)}`;
+	const urlWithParams = (base: string, params?: QueryParams) => {
+		if (!params || Object.keys(params).length === 0) {
+			return base;
+		}
+
+		const searchParams = new URLSearchParams(
+			Object.entries(params).map(([k, v]) => [k, String(v)])
+		);
+
+		return `${base}?${searchParams.toString()}`;
+	}
 
 	const fetchData = useCallback(
 		async (options: RefetchOptions = {}) => {
