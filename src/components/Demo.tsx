@@ -1,13 +1,3 @@
-# Module 4. React. Tasks.
-
-## Реализация хука useFetch()
-
-Хук для GET-запросов — следит за состоянием запроса (статус загрузки, ошибки),
-поддерживает `refetch()` с query-параметрами.
-
-Пример использование хука:
-
-````
 import { useFetch } from '../hooks';
 
 export function Demo() {
@@ -35,4 +25,3 @@ export function Demo() {
 		</div>
 	);
 }
-````
