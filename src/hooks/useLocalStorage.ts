@@ -13,13 +13,13 @@ type UseLocalStorage = (key: string) => [
 
 export const useLocalStorage: UseLocalStorage = (key) => {
 	const [value, setValue] = useState<LocalStorageReturnValue>(
-		localStorage.getItem(key),
+		localStorage.getItem(key)
 	);
 
 	const setItem = useCallback(
-		(v: LocalStorageSetValue) => {
-			localStorage.setItem(key, v);
-			setValue(v);
+		(newValue: LocalStorageSetValue) => {
+			localStorage.setItem(key, newValue);
+			setValue(newValue);
 		},
 		[key],
 	);
